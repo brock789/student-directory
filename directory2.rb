@@ -39,47 +39,27 @@ end
 # print the output
 
 def print(students)
-  students.each do |student| 
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
-  end
+  # 12 characters
+  # return  students.select { |student| student[:name].length<12 }.each_with_index do |student, index| 
+  #   puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+  # end
+  # #starts with A
+   return  students.select { |student| student[:name].start_with?('A') }.each_with_index do |student, index| 
+     puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+   end
+  #x=0
+  #while x < students.length
+    #p "#{students[x].index}. #{students[x].value} #{students[x]}
+    #x+=1
+  #end
 end
 
 def print_footer(students)
   puts "Overall, we have #{students.size} great students"
 end
 
-def interactive_menu
-  students = []
-  loop do
-  # 1. print the menu and ask the user what to do
-  puts "1. Input the students"
-  puts "2. Show the students"
-  puts "9. Exit" #9 because adding more items
-  # 2. read the input and save it into a variable
-  selection = gets.chomp
-  # 3. do what the user has asked
-  case selection
-   when "1"
-    students = input_students
-    # input the students
-   when "2"
-    print_header
-    print(students)
-    students
-    print_footer(students)
-    # show the students
-   when "9"
-    exit # this will cause the program to terminate
-   else
-    puts "I don't know what you meant, try again"
-   end
-  # 4. repeat from step 1
-  
-  end
-end
 #calling the methods above
-#students = input_students
-#print_header
-#print(students)
-#print_footer(students)
-interactive_menu
+students = input_students
+print_header
+print(students)
+print_footer(students)
